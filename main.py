@@ -1,6 +1,8 @@
-from tkinter import *
 import pygame
 import time
+from tkinter import *
+from hashlib import sha512
+
 
 # Init pygame pour jouer un fond sonore !
 pygame.mixer.init()
@@ -134,6 +136,10 @@ def confirm_inscription():
                 # Verifie si les mdp sont les memes
                 if (mdp == confirm_mdp):
                     # todo faire l'enregistrement de l'utilisateur
+                    mdp = mdp.encode()
+                    mdp_sign = sha512(mdp).hexdigest()
+                    # Mot de passe hashé , pour plus de sécurité ;)
+                    print(mdp_sign)
                     # Rafraichi la fentre pour afficher la confirmation de l'enregistrement
                     for widget in fenetre.winfo_children():
                         widget.pack_forget()
