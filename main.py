@@ -1,4 +1,5 @@
 from tkinter import *
+import pygame
 
 # creer une fenetre
 fenetre = Tk()
@@ -33,5 +34,13 @@ button_play = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, ancho
 button_hs = Button(frame, text="high score", font=("caveat", 40), bg="black", fg="white")
 button_hs = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center', window=button_hs)
 
+# init pygame pour jouer un fond sonore !
+pygame.mixer.init()
+song = pygame.mixer.Sound("ressources/musique/aled.ogg")
+song.play()
+
+
+
 # affiche la fenetre
 fenetre.mainloop()
+
