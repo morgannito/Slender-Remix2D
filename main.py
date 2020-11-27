@@ -2,165 +2,167 @@ from tkinter import *
 import pygame
 import time
 
+# Init pygame pour jouer un fond sonore !
 pygame.mixer.init()
 
 def main():
-    # creer une fenetre
+    # Creer une fenetre
     global fenetre
     fenetre = Tk()
-    # fullscreen
+    # Fullscreen
     fenetre.attributes('-fullscreen', 1)
-    # donne un titre à la fenetre
+    # Donne un titre à la fenetre
     fenetre.title("Slender Remix 2D")
-    # dimension de la fenetre
+    # Dimension de la fenetre
     fenetre.geometry("1920x1080")
-    # taille minimun de la fenetre
+    # Taille minimun de la fenetre
     fenetre.minsize(1080, 720)
-    # logo de la fenetre
+    # Logo de la fenetre
     fenetre.iconbitmap("ressources/images/logo/slender-remix.ico")
-    # couleur de fond de la fenetre
+    # Couleur de fond de la fenetre
     fenetre.config(background="black")
-    # ajout du titre du jeu dans la fenetre
+    # Ajout du titre du jeu dans la fenetre
     title = Label(fenetre, text="Slender Remix 2D ", font=("caveat", 40), bg="black", fg="white")
-    # ajoute le titre
+    # Ajoute le titre
     title.pack()
-    # creation d'une frame
-    frame = Frame(fenetre, bg="#1ac0ff")
-    # ajouter la frame
+    # Creation d'une frame
+    frame = Frame(fenetre, bg="black")
+    # Ajouter la frame
     frame.pack(expand=YES)
-    # création de l'image de fond pour la fenetre
+    # Création de l'image de fond pour la fenetre
     fenetre.image = PhotoImage(file='ressources/images/menu/fantasy-2847724_1920.png')
     fenetre.w, fenetre.h = fenetre.image.width(), fenetre.image.height()
     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
-    # ajout du bouton play
+    # Ajout du bouton play
     button_play = Button(frame, text="play", font=("caveat", 40), bg="black", fg="white", command=play)
     button_play = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, anchor='center', window=button_play)
-    # ajout du bouton high score
+    # Ajout du bouton high score
     button_hs = Button(frame, text="high score", font=("caveat", 40), bg="black", fg="white", command=highScore)
     button_hs = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center', window=button_hs)
-    # init pygame pour jouer un fond sonore !
     song = pygame.mixer.Sound("ressources/musique/aled.ogg")
-    # loop = repete la musique , time = à quel moment de demarrage  la musique doit etre jouer ,fadein = fondu sonore
+    # Loop = repete la musique , time = à quel moment de demarrage  la musique doit etre jouer ,fadein = fondu sonore
     song.play(10, 0, 10000)
-    # affiche la fenetre
+    # Affiche la fenetre
     fenetre.mainloop()
 
-# fonnction boutton play
+# Fonction boutton play
 def play():
     song2 = pygame.mixer.Sound("ressources/musique/battement.wav")
     song2.play()
     for widget in fenetre.winfo_children():
-        ## CHOIX 1:
-        widget.pack_forget()  # Si vous utilisez .pack()
+        widget.pack_forget()
     title_play = Label(fenetre, text="Slender Remix 2D", font=("caveat", 40), bg="black", fg="white")
     title_play.pack()
-    frame = Frame(fenetre, bg="#1ac0ff")
-    # ajouter la frame
+    frame = Frame(fenetre, bg="black")
+    # Ajouter la frame
     frame.pack(expand=YES)
-    # création de l'image de fond pour la fenetre
+    # Création de l'image de fond pour la fenetre
     fenetre.image = PhotoImage(file='ressources/images/menu/fantasy-2847724_1920.png')
     fenetre.w, fenetre.h = fenetre.image.width(), fenetre.image.height()
     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
-    # ajout du champ login
+    # Ajout du champ login
     pseudo = StringVar(frame, value='Login')
     champ_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable = pseudo)
     champ_login = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center', window=champ_login)
-    # ajout du champ mdp
+    # Ajout du champ mdp
     mdp = StringVar(frame, value='Mot de passe')
     champ_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white",show="*", textvariable = mdp)
     champ_mdp = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 , anchor='center', window=champ_mdp)
-    # ajout du bouton high score
+    # Ajout du bouton high score
     button_login = Button(frame, text="Login", font=("caveat", 40), bg="black", fg="white",command=login)
     button_login = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center', window=button_login)
-    # ajout du bouton high score
+    # Ajout du bouton high score
     button_inscription = Button(frame, text="inscription", font=("caveat", 40), bg="black", fg="white",command=signup)
     button_inscription = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 350, anchor='center', window=button_inscription)
 
 
-# fonction boutton login , Lancement du jeu apres connection
+# Fonction boutton login , Lancement du jeu apres connection
 def login():
     print("Lance le jeu si login ok")
 
 
-# fonction button inscription,  Inscription au jeu
+# Fonction button inscription,  Inscription au jeu
 def signup():
     for widget in fenetre.winfo_children():
-        ## CHOIX 1:
-        widget.pack_forget()  # Si vous utilisez .pack()
+        widget.pack_forget()
     title_play = Label(fenetre, text="Slender Remix 2D", font=("caveat", 40), bg="black", fg="white")
     title_play.pack()
     frame = Frame(fenetre, bg="#1ac0ff")
-    # ajouter la frame
+    # Ajouter la frame
     frame.pack(expand=YES)
-    # création de l'image de fond pour la fenetre
+    # Création de l'image de fond pour la fenetre
     fenetre.image = PhotoImage(file='ressources/images/menu/fantasy-2847724_1920.png')
     fenetre.w, fenetre.h = fenetre.image.width(), fenetre.image.height()
     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
-    # ajout du champ login
+    # Ajout du champ login
     global champ_login
     login = StringVar(frame, value='Login')
     champ_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=login)
     champ_login2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center',
                                                window=champ_login)
-    # ajout du champ mdp
+    # Ajout du champ mdp
     global champ_mdp
     mdp = StringVar(frame, value='Mot de passe')
     champ_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=mdp)
     champ_mdp2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, anchor='center', window=champ_mdp)
-    # ajout du champ mdp
+    # Ajout du champ mdp
     global champ_confirm_mdp
     confirm_mdp = StringVar(frame, value=' Confirm Mot de passe')
     champ_confirm_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=confirm_mdp)
     champ_confirm_mdp2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2+100, anchor='center', window=champ_confirm_mdp)
 
-    # ajout du bouton
+    # Ajout du bouton
     button_inscription = Button(frame, text="Confirmer", font=("caveat", 40), bg="black", fg="white", command=confirm_inscription)
     button_inscription2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 350, anchor='center',
                                                       window=button_inscription)
 
 def confirm_inscription():
+    # Recupere les données des champs
     login = champ_login.get()
     mdp = champ_mdp.get()
     confirm_mdp = champ_confirm_mdp.get()
+    # Verifie si les champs sont plein
     if (login):
         if (mdp):
             if (confirm_mdp):
+                # Verifie si les mdp sont les memes
                 if (mdp == confirm_mdp):
-                    print("les mdp sont corrects")
                     # todo faire l'enregistrement de l'utilisateur
                     # Rafraichi la fentre pour afficher la confirmation de l'enregistrement
                     for widget in fenetre.winfo_children():
-                        ## CHOIX 1:
-                        widget.pack_forget()  # Si vous utilisez .pack()
+                        widget.pack_forget()
                     title_play = Label(fenetre, text="Slender Remix 2D", font=("caveat", 40), bg="black", fg="white")
                     title_play.pack()
                     frame = Frame(fenetre, bg="black")
-                    # ajouter la frame
+                    # Ajouter la frame
                     frame.pack(expand=YES)
-                    # création de l'image de fond pour la fenetre
+                    # Création de l'image de fond pour la fenetre
                     fenetre.image = PhotoImage(file='ressources/images/menu/fantasy-2847724_1920.png')
                     fenetre.w, fenetre.h = fenetre.image.width(), fenetre.image.height()
                     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
                     fenetre.canvas.pack()
                     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
-                    # ajout du champ login
+                    # Ajout du champ login
                     Confirm = Label(frame, font=("caveat", 40), bg="black", fg="white", text="Vous etes bien Inscrit")
                     Confirm = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 ,
                                                                anchor='center', window=Confirm)
                     # Rafraichie
                     frame.update()
+                    # Une ptite pause pour laisser le message s'afficher !
                     time.sleep(5)
-                    # renvoie sur la page de login !
+                    # Renvoie sur la page de login !
                     play()
 
 # Affiche les highScore
 def highScore():
     print("Lance la fentre des high Score")
 
+
+# Lance le programme :) !
 main()
