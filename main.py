@@ -1,5 +1,6 @@
 from tkinter import *
 import pygame
+import time
 
 pygame.mixer.init()
 
@@ -102,19 +103,61 @@ def signup():
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
     # ajout du champ login
+    global champ_login
     login = StringVar(frame, value='Login')
     champ_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=login)
-    champ_login = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center',
+    champ_login2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center',
                                                window=champ_login)
     # ajout du champ mdp
+    global champ_mdp
     mdp = StringVar(frame, value='Mot de passe')
-    champ_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white", show="*", textvariable=mdp)
-    champ_mdp = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, anchor='center', window=champ_mdp)
+    champ_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=mdp)
+    champ_mdp2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, anchor='center', window=champ_mdp)
+    # ajout du champ mdp
+    global champ_confirm_mdp
+    confirm_mdp = StringVar(frame, value=' Confirm Mot de passe')
+    champ_confirm_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=confirm_mdp)
+    champ_confirm_mdp2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2+100, anchor='center', window=champ_confirm_mdp)
 
     # ajout du bouton
-    button_inscription = Button(frame, text="inscription", font=("caveat", 40), bg="black", fg="white")
-    button_inscription = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 350, anchor='center',
+    button_inscription = Button(frame, text="Confirmer", font=("caveat", 40), bg="black", fg="white", command=confirm_inscription)
+    button_inscription2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 350, anchor='center',
                                                       window=button_inscription)
+
+def confirm_inscription():
+    login = champ_login.get()
+    mdp = champ_mdp.get()
+    confirm_mdp = champ_confirm_mdp.get()
+    if (login):
+        if (mdp):
+            if (confirm_mdp):
+                if (mdp == confirm_mdp):
+                    print("les mdp sont corrects")
+                    # todo faire l'enregistrement de l'utilisateur
+                    # Rafraichi la fentre pour afficher la confirmation de l'enregistrement
+                    for widget in fenetre.winfo_children():
+                        ## CHOIX 1:
+                        widget.pack_forget()  # Si vous utilisez .pack()
+                    title_play = Label(fenetre, text="Slender Remix 2D", font=("caveat", 40), bg="black", fg="white")
+                    title_play.pack()
+                    frame = Frame(fenetre, bg="black")
+                    # ajouter la frame
+                    frame.pack(expand=YES)
+                    # création de l'image de fond pour la fenetre
+                    fenetre.image = PhotoImage(file='ressources/images/menu/fantasy-2847724_1920.png')
+                    fenetre.w, fenetre.h = fenetre.image.width(), fenetre.image.height()
+                    fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
+                    fenetre.canvas.pack()
+                    fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
+                    # ajout du champ login
+                    Confirm = Label(frame, font=("caveat", 40), bg="black", fg="white", text="Vous etes bien Inscrit")
+                    Confirm = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 ,
+                                                               anchor='center', window=Confirm)
+                    # Rafraichie
+                    frame.update()
+                    time.sleep(5)
+                    # renvoie sur la page de login !
+                    play()
 
 # Affiche les highScore
 def highScore():
