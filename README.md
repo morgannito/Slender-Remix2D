@@ -18,12 +18,15 @@ L’ajout d’une musique ou d’un son indiquant que slender est proche du joue
 
 site utilisés :
   
-    Pour les images  :
+Pour les images  :
+
+[Pixabay](https://pixabay.com/fr/)
     
-    [Pixabay](https://pixabay.com/fr/)
-        
-    Pour la conversion de contenu audio :
-    
-    [Online-convert](https://audio.online-convert.com/fr/convertir-en-ogg)
+Pour la conversion de contenu audio :
+
+[Online-convert](https://audio.online-convert.com/fr/convertir-en-ogg)
+
+[La sonotheque](https://lasonotheque.org/search)
+
     
        
