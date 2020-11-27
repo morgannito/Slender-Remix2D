@@ -33,14 +33,10 @@ button_play = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, ancho
 # ajout du bouton high score
 button_hs = Button(frame, text="high score", font=("caveat", 40), bg="black", fg="white")
 button_hs = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center', window=button_hs)
-
 # init pygame pour jouer un fond sonore !
 pygame.mixer.init()
 song = pygame.mixer.Sound("ressources/musique/aled.ogg")
-song.play()
-
-
-
+# loop = repete la musique , time = à quel moment de demarrage  la musique doit etre jouer ,fadein = fondu sonore
+song.play(10, 0, 5000)
 # affiche la fenetre
 fenetre.mainloop()
-
