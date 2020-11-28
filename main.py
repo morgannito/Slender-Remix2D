@@ -141,9 +141,10 @@ def confirm_inscription():
                     mdp = mdp.encode()
                     mdp_sign = sha512(mdp).hexdigest()
                     # Mot de passe hashé , pour plus de sécurité ;)
-                    # todo voir une autre manière de faire ...
-                    url = 'http://morgannito.com/apiSlender/inscription.php?login='+login+'&mdp='+mdp_sign+''
-                    x = requests.post(url)
+                    dic = {"login" : login , "mdp" : mdp_sign}
+                    jsondata = json.dumps(dic).encode("utf8")
+                    url = 'http://morgannito.com/apiSlender/inscription.php'
+                    x = requests.post(url, data=jsondata)
                     # Rafraichi la fentre pour afficher la confirmation de l'enregistrement
                     for widget in fenetre.winfo_children():
                         widget.pack_forget()
