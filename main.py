@@ -1,5 +1,8 @@
 import pygame
 import time
+import json
+import requests
+from urllib import request, parse
 from tkinter import *
 from hashlib import sha512
 
@@ -135,11 +138,12 @@ def confirm_inscription():
             if (confirm_mdp):
                 # Verifie si les mdp sont les memes
                 if (mdp == confirm_mdp):
-                    # todo faire l'enregistrement de l'utilisateur
                     mdp = mdp.encode()
                     mdp_sign = sha512(mdp).hexdigest()
                     # Mot de passe hashé , pour plus de sécurité ;)
-                    print(mdp_sign)
+                    # todo voir une autre manière de faire ...
+                    url = 'http://morgannito.com/apiSlender/inscription.php?login='+login+'&mdp='+mdp_sign+''
+                    x = requests.post(url)
                     # Rafraichi la fentre pour afficher la confirmation de l'enregistrement
                     for widget in fenetre.winfo_children():
                         widget.pack_forget()
