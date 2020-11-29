@@ -44,10 +44,13 @@ def main():
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
     # Ajout du bouton play
     button_play = Button(frame, text="play", font=("caveat", 40), bg="black", fg="white", command=play)
-    button_play = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, anchor='center', window=button_play)
+    button_play = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center', window=button_play)
     # Ajout du bouton high score
     button_hs = Button(frame, text="high score", font=("caveat", 40), bg="black", fg="white", command=highScore)
-    button_hs = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center', window=button_hs)
+    button_hs = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 , anchor='center', window=button_hs)
+    # Ajout du bouton Quitter
+    button_quit = Button(frame, text="Quitter", font=("caveat", 40), bg="black", fg="white", command=quit)
+    button_quit = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center', window=button_quit)
     song = pygame.mixer.Sound("ressources/musique/aled.ogg")
     # Loop = repete la musique , time = à quel moment de demarrage  la musique doit etre jouer ,fadein = fondu sonore
     song.play(10, 0, 10000)
@@ -244,6 +247,9 @@ def confirm_inscription():
 # Affiche les highScore
 def highScore():
     print("Lance la fentre des high Score")
+
+def quit():
+    fenetre.destroy()
 
 
 # Lance le programme :) !
