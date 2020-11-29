@@ -10,6 +10,8 @@ from hashlib import sha512
 # Init pygame pour jouer un fond sonore !
 pygame.mixer.init()
 
+
+# Page Home
 def main():
     # Creer une fenetre
     global fenetre
@@ -52,7 +54,8 @@ def main():
     # Affiche la fenetre
     fenetre.mainloop()
 
-# Fonction boutton play
+# Fonction boutton Home/play
+# Page du Play
 def play():
     song2 = pygame.mixer.Sound("ressources/musique/battement.wav")
     song2.play()
@@ -71,12 +74,14 @@ def play():
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
     # Ajout du champ login
     pseudo = StringVar(frame, value='Login')
-    champ_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable = pseudo)
-    champ_login = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center', window=champ_login)
+    global champ_login_login
+    champ_login_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable = pseudo)
+    champ_login = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center', window=champ_login_login)
     # Ajout du champ mdp
     mdp = StringVar(frame, value='Mot de passe')
-    champ_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white",show="*", textvariable = mdp)
-    champ_mdp = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 , anchor='center', window=champ_mdp)
+    global champ_mdp_login
+    champ_mdp_login = Entry(frame, font=("caveat", 40), bg="black", fg="white",show="*", textvariable = mdp)
+    champ_mdp = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 , anchor='center', window=champ_mdp_login)
     # Ajout du bouton high score
     button_login = Button(frame, text="Login", font=("caveat", 40), bg="black", fg="white",command=login)
     button_login = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center', window=button_login)
@@ -85,12 +90,28 @@ def play():
     button_inscription = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 350, anchor='center', window=button_inscription)
 
 
-# Fonction boutton login , Lancement du jeu apres connection
+# Fonction boutton login
+# Lancement du jeu apres connection
 def login():
-    print("Lance le jeu si login ok")
+    login = champ_login_login.get()
+    mdp = champ_mdp_login.get()
+    # Verifie si les champs sont plein
+    if (login):
+        if (mdp):
+            mdp = mdp.encode()
+            mdp_hash = sha512(mdp).hexdigest()
+            # Mot de passe hashé , pour plus de sécurité ;)
+            dic = {"login": login, "mdp": mdp_hash}
+            jsondata = json.dumps(dic).encode("utf8")
+            url = 'http://morgannito.com/apiSlender/login.php'
+            x = requests.post(url, data=jsondata)
+            y = x.text
+            print(y)
+            print("Lance le jeu si login ok")
 
 
-# Fonction button inscription,  Inscription au jeu
+# Fonction button inscription
+# Page Inscription au jeu
 def signup():
     for widget in fenetre.winfo_children():
         widget.pack_forget()
@@ -127,6 +148,7 @@ def signup():
     button_inscription2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 350, anchor='center',
                                                       window=button_inscription)
 
+# function du bouton de confirmation d'inscription
 def confirm_inscription():
     # Recupere les données des champs
     login = champ_login.get()
@@ -170,6 +192,7 @@ def confirm_inscription():
                     # Renvoie sur la page de login !
                     play()
 
+# Func Bouton Home/High Score
 # Affiche les highScore
 def highScore():
     print("Lance la fentre des high Score")
