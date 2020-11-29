@@ -105,9 +105,11 @@ def login():
             jsondata = json.dumps(dic).encode("utf8")
             url = 'http://morgannito.com/apiSlender/login.php'
             x = requests.post(url, data=jsondata)
-            y = x.text
-            print(y)
-            print("Lance le jeu si login ok")
+            x = json.loads(x.text)
+            if (x['erreur'] == 1) :
+                print("erreur mdp ou login")
+            else :
+                print("go play")
 
 
 # Fonction button inscription
