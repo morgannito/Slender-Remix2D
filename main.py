@@ -165,7 +165,7 @@ def login():
                 # Une ptite pause pour laisser le message s'afficher !
                 time.sleep(5)
                 # Lance le niveaux 1
-                fileName = 'level/1.csv'
+                fileName = 'ressources/level/1.csv'
                 # matrice used to display the board
                 global lab
                 lab = []
