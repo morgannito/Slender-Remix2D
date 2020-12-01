@@ -17,3 +17,4 @@ mysql~=0.0.2
 mysql-connector-python~=8.0.22
 pygame~=1.9.6
 future~=0.18.2
+requests~=2.22.0
