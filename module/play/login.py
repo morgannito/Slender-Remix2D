@@ -50,4 +50,3 @@ def login(fenetre,login,mdp ):
                 play.play()
             else:
                 start.jouer(fenetre)
-            print("Lance le jeu ")

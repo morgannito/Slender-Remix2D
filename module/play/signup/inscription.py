@@ -23,18 +23,15 @@ def signup(fenetre):
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
     # Ajout du champ login
-    global champ_login
     login = StringVar(frame, value='Login')
     champ_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=login)
     champ_login2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center',
                                                 window=champ_login)
     # Ajout du champ mdp
-    global champ_mdp
     mdp = StringVar(frame, value='Mot de passe')
     champ_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=mdp)
     champ_mdp2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, anchor='center', window=champ_mdp)
     # Ajout du champ mdp
-    global champ_confirm_mdp
     confirm_mdp = StringVar(frame, value=' Confirm Mot de passe')
     champ_confirm_mdp = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=confirm_mdp)
     champ_confirm_mdp2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 100, anchor='center',

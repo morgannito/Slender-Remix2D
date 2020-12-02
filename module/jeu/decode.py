@@ -11,7 +11,6 @@ def decode_csv(fileName):
             data = line.replace('\n', '').split(",")
             data = [int(i) for i in data]
             board.lab.append(data)
-        global row_number, column_number
         column_number = len(data)
         row_number = len(board.lab)
         end_position = [row_number - 2, column_number - 2]

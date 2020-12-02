@@ -24,13 +24,11 @@ def play(fenetre):
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
     # Ajout du champ login
     pseudo = StringVar(frame, value='Login')
-    global champ_login_login
     champ_login_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=pseudo)
     champ_login = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center',
                                                window=champ_login_login)
     # Ajout du champ mdp
     mdp = StringVar(frame, value='Mot de passe')
-    global champ_mdp_login
     champ_mdp_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", show="*", textvariable=mdp)
     champ_mdp = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, anchor='center', window=champ_mdp_login)
     # Ajout du bouton login

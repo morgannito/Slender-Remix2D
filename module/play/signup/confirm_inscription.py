@@ -9,7 +9,6 @@ import module.play.button as connection
 # function du bouton de confirmation d'inscription
 def confirm_inscription(fenetre ,login,mdp,confirm_mdp ):
     # Verifie si les champs sont plein
-    print(login,mdp,confirm_mdp)
     if (login):
         if (mdp):
             if (confirm_mdp):
@@ -43,6 +42,6 @@ def confirm_inscription(fenetre ,login,mdp,confirm_mdp ):
                     # Rafraichie
                     frame.update()
                     # Une ptite pause pour laisser le message s'afficher !
-                    time.sleep(5)
+                    time.sleep(2)
                     # Renvoie sur la page de login !
                     connection.play(fenetre)
