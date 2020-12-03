@@ -1,5 +1,5 @@
-import module.jeu.board as board
-
+# import module.jeu.board as board
+import test
 # decode the .csv file
 def decode_csv(fileName):
     with open(fileName, "r") as file:
@@ -10,8 +10,8 @@ def decode_csv(fileName):
         for line in file:
             data = line.replace('\n', '').split(",")
             data = [int(i) for i in data]
-            board.lab.append(data)
+            test.lab.append(data)
         column_number = len(data)
-        row_number = len(board.lab)
+        row_number = len(test.lab)
         end_position = [row_number - 2, column_number - 2]
     file.close()
