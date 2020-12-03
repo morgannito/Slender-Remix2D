@@ -132,8 +132,16 @@ def jouer(fenetre, lab):
             y = y + 1
         x = x + 1
         y = 0
-    if (page == 0 ):
-        print("plus aucune pages")
+    if (page == 0):
+        title2 = Label(frame, text="Trouvez la sortie vite !!!", font=("caveat", 40), bg="black",
+                       fg="white")
+        # Ajoute le titre
+        title2.pack()
+    else :
+            title2 = Label(frame, text="Nombre de pages restantes : " + str(page) + "", font=("caveat", 40), bg="black",
+                       fg="white")
+            title2.pack()
+
 
     fenetre.bind("<Key>", key_pressed)
     # Affiche la fenetre
