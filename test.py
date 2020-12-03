@@ -3,6 +3,9 @@ from tkinter import *
 import time
 from PIL import Image
 from PIL import ImageTk
+import schedule
+import random
+
 
 # Creer une fenetre
 fenetre = Tk()
@@ -27,6 +30,8 @@ lab = []
 start_position = [1, 1]
 # human position
 human_position = start_position
+
+
 with open(fileName, "r") as file:
     # decode and get the column and row number
     first_line = file.readline()
@@ -62,7 +67,6 @@ def jouer(fenetre, lab):
                 for i in range(14)] for j in range(19)]
     # max i 26 max j 18
     canvas1.pack()
-
     #mur
     mur = Image.open("ressources/images/jeu/buisson.jpg")  # PIL solution
     mur = mur.resize((40, 40), Image.ANTIALIAS)  # The (250, 250) is (height, width)
@@ -111,7 +115,6 @@ def jouer(fenetre, lab):
                 canvas1.itemconfigure(carreau[x][y], fill="white")
                 w, p, g, l = canvas1.coords(carreau[x][y])
                 canvas1.create_image(w, p, anchor=NW, image=terre)
-
             #  sortie
             if i == 44:
                 canvas1.itemconfigure(carreau[x][y], fill="white")
@@ -126,21 +129,22 @@ def jouer(fenetre, lab):
             y = y + 1
         x = x + 1
         y = 0
-        fenetre.bind("<Key>", key_pressed)
+    fenetre.bind("<Key>", key_pressed)
     # Affiche la fenetre
     fenetre.mainloop()
 
 def key_pressed(event):
-    print(event.char)
     if (event.char == "q"):
         for row in lab:
             for i in row:
                 if (i == 22):
-                    # lab.index(row) = ligne -
-                    # row.index(i) = la colonne |
                     ligne = lab.index(row)
                     colonne = row.index(i)
                     if (lab[ligne][colonne - 1] == 99):
+                        lab[ligne][colonne] = 99
+                        lab[ligne][colonne - 1] = 22
+                        jouer(fenetre, lab)
+                    if (lab[ligne][colonne - 1] == 33):
                         lab[ligne][colonne] = 99
                         lab[ligne][colonne - 1] = 22
                         jouer(fenetre, lab)
@@ -149,11 +153,13 @@ def key_pressed(event):
         for row in lab:
             for i in row:
                 if (i == 22):
-                    # lab.index(row) = ligne -
-                    # row.index(i) = la colonne |
                     ligne = lab.index(row)
                     colonne = row.index(i)
                     if (lab[ligne][colonne+1] == 99):
+                        lab[ligne][colonne] = 99
+                        lab[ligne][colonne+1] = 22
+                        jouer(fenetre, lab)
+                    if (lab[ligne][colonne+1] == 33):
                         lab[ligne][colonne] = 99
                         lab[ligne][colonne+1] = 22
                         jouer(fenetre, lab)
@@ -162,11 +168,13 @@ def key_pressed(event):
         for row in lab:
             for i in row :
                 if (i ==  22) :
-                    # lab.index(row) = ligne -
-                    # row.index(i) = la colonne |
                     ligne = lab.index(row)
                     colonne = row.index(i)
                     if(lab[ligne-1][colonne] == 99) :
+                        lab[ligne][colonne] = 99
+                        lab[ligne- 1][colonne] = 22
+                        jouer(fenetre,lab)
+                    if(lab[ligne-1][colonne] == 33) :
                         lab[ligne][colonne] = 99
                         lab[ligne- 1][colonne] = 22
                         jouer(fenetre,lab)
@@ -175,14 +183,65 @@ def key_pressed(event):
         for row in lab:
             for i in row :
                 if (i ==  22) :
-                    # lab.index(row) = ligne -
-                    # row.index(i) = la colonne |
                     ligne = lab.index(row)
                     colonne = row.index(i)
                     if(lab[ligne+1][colonne] == 99) :
                         lab[ligne][colonne] = 99
                         lab[ligne+ 1][colonne] = 22
                         jouer(fenetre,lab)
+                    if (lab[ligne + 1][colonne] == 33):
+                        lab[ligne][colonne] = 99
+                        lab[ligne + 1][colonne] = 22
+                        jouer(fenetre, lab)
+
+################################################
+
+def slenderMove():
+    d = random.randint(0, 3)
+    if (d == 0):
+        for row in lab:
+            for i in row:
+                if (i == 22):
+                    ligne = lab.index(row)
+                    colonne = row.index(i)
+                    if (lab[ligne][colonne - 1] == 99):
+                        lab[ligne][colonne] = 99
+                        lab[ligne][colonne - 1] = 22
+                        jouer(fenetre, lab)
+
+    if (d == 1):
+        for row in lab:
+            for i in row:
+                if (i == 22):
+                    ligne = lab.index(row)
+                    colonne = row.index(i)
+                    if (lab[ligne][colonne + 1] == 99):
+                        lab[ligne][colonne] = 99
+                        lab[ligne][colonne + 1] = 22
+                        jouer(fenetre, lab)
+
+    if (d == 2):
+        for row in lab:
+            for i in row:
+                if (i == 22):
+                    ligne = lab.index(row)
+                    colonne = row.index(i)
+                    if (lab[ligne - 1][colonne] == 99):
+                        lab[ligne][colonne] = 99
+                        lab[ligne - 1][colonne] = 22
+                        jouer(fenetre, lab)
+
+    if (d == 3):
+        for row in lab:
+            for i in row:
+                if (i == 22):
+                    ligne = lab.index(row)
+                    colonne = row.index(i)
+                    if (lab[ligne + 1][colonne] == 99):
+                        lab[ligne][colonne] = 99
+                        lab[ligne + 1][colonne] = 22
+                        jouer(fenetre, lab)
+
 
 
 

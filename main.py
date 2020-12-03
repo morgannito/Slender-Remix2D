@@ -1,17 +1,13 @@
 from functools import partial
-
 import pygame
 from tkinter import *
-
 # Init pygame pour jouer un fond sonore !
 pygame.mixer.init()
 # buttonHighScore.py
 import module.highScore.buttonHighScore as highscore
 # buttonQuit.py
 import module.quit.buttonQuit as homeExit
-
 import module.play.button as homePlay
-
 
 # Page Home
 def main():
