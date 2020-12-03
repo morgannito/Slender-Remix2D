@@ -51,4 +51,28 @@ def login(fenetre,login,mdp ):
                 # Renvoie sur la page de login  cause erreur mdp!
                 play.play(fenetre)
             else:
-                start.jouer(fenetre)
+                # Lance le niveaux 1
+                fileName = 'ressources/level/1.csv'
+                # matrice used to display the board
+                lab = []
+                # starting position
+                start_position = [1, 1]
+                # human position
+                human_position = start_position
+
+                with open(fileName, "r") as file:
+                    # decode and get the column and row number
+                    first_line = file.readline()
+                    row_and_column = first_line.replace('\n', '').split(",")
+                    row_and_column = [int(i) for i in row_and_column]
+                    for line in file:
+                        data = line.replace('\n', '').split(",")
+                        data = [int(i) for i in data]
+                        lab.append(data)
+                    column_number = len(data)
+                    row_number = len(lab)
+                    end_position = [row_number - 2, column_number - 2]
+                file.close()
+                start.jouer(fenetre,lab)
+
+

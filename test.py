@@ -31,7 +31,6 @@ start_position = [1, 1]
 # human position
 human_position = start_position
 
-
 with open(fileName, "r") as file:
     # decode and get the column and row number
     first_line = file.readline()
