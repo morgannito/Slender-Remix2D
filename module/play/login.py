@@ -8,6 +8,7 @@ import time
 import module.play.button as play
 
 import module.jeu.board as start
+
 # Fonction boutton login
 # Lancement du jeu apres connection
 def login(fenetre,login,mdp ):
@@ -39,7 +40,8 @@ def login(fenetre,login,mdp ):
                 fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
                 # Ajout du champ login
                 Confirm = Label(frame, font=("caveat", 40), bg="black", fg="white",
-                                text="Erreur Mot de passe invalide ou login invalide")
+                                text="Erreur Mot de passe invalide ou login "
+                                     "")
                 Confirm = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2,
                                                        anchor='center', window=Confirm)
                 # Rafraichie
@@ -47,6 +49,6 @@ def login(fenetre,login,mdp ):
                 # Une ptite pause pour laisser le message s'afficher !
                 time.sleep(5)
                 # Renvoie sur la page de login  cause erreur mdp!
-                play.play()
+                play.play(fenetre)
             else:
                 start.jouer(fenetre)
