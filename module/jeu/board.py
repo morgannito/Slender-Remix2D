@@ -9,6 +9,7 @@ import module.jeu.win.win as win
 
 
 def jouer(fenetre, lab):
+    # todo changé cette horreur !!
     global gameBoard , map
     gameBoard = fenetre
     map = lab
