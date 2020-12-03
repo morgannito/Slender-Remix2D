@@ -5,7 +5,7 @@ from PIL import Image
 from PIL import ImageTk
 import schedule
 import random
-
+import module.jeu.win.win as win
 
 # Creer une fenetre
 fenetre = Tk()
@@ -166,6 +166,8 @@ def key_pressed(event):
                         lab[ligne][colonne] = 99
                         lab[ligne][colonne - 1] = 22
                         print("vous avez gagné")
+                        win.win(fenetre)
+
 
     if (event.char == "d"):
         for row in lab:
@@ -185,6 +187,8 @@ def key_pressed(event):
                         lab[ligne][colonne] = 99
                         lab[ligne][colonne+1] = 22
                         print("vous avez gagné")
+                        win.win(fenetre)
+
 
     if (event.char == "z"):
         for row in lab:
@@ -204,6 +208,8 @@ def key_pressed(event):
                         lab[ligne][colonne] = 99
                         lab[ligne- 1][colonne] = 22
                         print("vous avz gagné")
+                        win.win(fenetre)
+
 
     if (event.char == "s"):
         for row in lab:
@@ -223,6 +229,7 @@ def key_pressed(event):
                         lab[ligne][colonne] = 99
                         lab[ligne + 1][colonne] = 22
                         print("vous avez gagné")
+                        win.win(fenetre)
 
 
 
