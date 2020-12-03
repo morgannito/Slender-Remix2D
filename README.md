@@ -22,6 +22,16 @@ Pour installer les packets nécessaires :
 
 
 
+
+Le jeu ce joue avec l'aide des touches :
+     
+        q : aller à gauche 
+        z : aller en haut
+        s : aller en bas
+        d : aller à droite
+Les pages se recoltes automatiquement quand on passe dessus. 
+
+
 site utilisés :
   
 Pour les images  :

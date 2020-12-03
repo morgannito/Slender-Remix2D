@@ -93,6 +93,8 @@ def jouer(fenetre, lab):
     terre = ImageTk.PhotoImage(terre)  # convert to PhotoImage
     x = 0
     y = 0
+    global page
+    page = 0
     for row in lab:
         for i in row:
             # Wall visual
@@ -105,6 +107,7 @@ def jouer(fenetre, lab):
                 canvas1.itemconfigure(carreau[x][y], fill="white")
                 w, p, g, l = canvas1.coords(carreau[x][y])
                 canvas1.create_image(w, p, anchor=NW, image=pages)
+                page = page + 1
             # human
             if i == 22:
                 canvas1.itemconfigure(carreau[x][y], fill="white")
@@ -129,6 +132,9 @@ def jouer(fenetre, lab):
             y = y + 1
         x = x + 1
         y = 0
+    if (page == 0 ):
+        print("plus aucune pages")
+
     fenetre.bind("<Key>", key_pressed)
     # Affiche la fenetre
     fenetre.mainloop()
@@ -148,6 +154,10 @@ def key_pressed(event):
                         lab[ligne][colonne] = 99
                         lab[ligne][colonne - 1] = 22
                         jouer(fenetre, lab)
+                    if (lab[ligne][colonne - 1] == 44 and page == 0):
+                        lab[ligne][colonne] = 99
+                        lab[ligne][colonne - 1] = 22
+                        print("vous avez gagné")
 
     if (event.char == "d"):
         for row in lab:
@@ -163,6 +173,10 @@ def key_pressed(event):
                         lab[ligne][colonne] = 99
                         lab[ligne][colonne+1] = 22
                         jouer(fenetre, lab)
+                    if (lab[ligne][colonne+1] == 44 and page == 0):
+                        lab[ligne][colonne] = 99
+                        lab[ligne][colonne+1] = 22
+                        print("vous avez gagné")
 
     if (event.char == "z"):
         for row in lab:
@@ -178,6 +192,10 @@ def key_pressed(event):
                         lab[ligne][colonne] = 99
                         lab[ligne- 1][colonne] = 22
                         jouer(fenetre,lab)
+                    if(lab[ligne-1][colonne] == 44 and page == 0) :
+                        lab[ligne][colonne] = 99
+                        lab[ligne- 1][colonne] = 22
+                        print("vous avz gagné")
 
     if (event.char == "s"):
         for row in lab:
@@ -193,55 +211,10 @@ def key_pressed(event):
                         lab[ligne][colonne] = 99
                         lab[ligne + 1][colonne] = 22
                         jouer(fenetre, lab)
-
-################################################
-
-def slenderMove():
-    d = random.randint(0, 3)
-    if (d == 0):
-        for row in lab:
-            for i in row:
-                if (i == 22):
-                    ligne = lab.index(row)
-                    colonne = row.index(i)
-                    if (lab[ligne][colonne - 1] == 99):
-                        lab[ligne][colonne] = 99
-                        lab[ligne][colonne - 1] = 22
-                        jouer(fenetre, lab)
-
-    if (d == 1):
-        for row in lab:
-            for i in row:
-                if (i == 22):
-                    ligne = lab.index(row)
-                    colonne = row.index(i)
-                    if (lab[ligne][colonne + 1] == 99):
-                        lab[ligne][colonne] = 99
-                        lab[ligne][colonne + 1] = 22
-                        jouer(fenetre, lab)
-
-    if (d == 2):
-        for row in lab:
-            for i in row:
-                if (i == 22):
-                    ligne = lab.index(row)
-                    colonne = row.index(i)
-                    if (lab[ligne - 1][colonne] == 99):
-                        lab[ligne][colonne] = 99
-                        lab[ligne - 1][colonne] = 22
-                        jouer(fenetre, lab)
-
-    if (d == 3):
-        for row in lab:
-            for i in row:
-                if (i == 22):
-                    ligne = lab.index(row)
-                    colonne = row.index(i)
-                    if (lab[ligne + 1][colonne] == 99):
+                    if (lab[ligne + 1][colonne] == 44 and page == 0):
                         lab[ligne][colonne] = 99
                         lab[ligne + 1][colonne] = 22
-                        jouer(fenetre, lab)
-
+                        print("vous avez gagné")
 
 
 
