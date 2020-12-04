@@ -8,6 +8,7 @@ import random
 import module.jeu.win.win as win
 
 
+
 def jouer(fenetre, lab):
     # todo changé cette horreur !!
     global gameBoard , map
@@ -104,13 +105,12 @@ def jouer(fenetre, lab):
             title2 = Label(frame, text="Nombre de pages restantes : " + str(page) + "", font=("caveat", 40), bg="black",
                        fg="white")
             title2.pack()
-
-
     gameBoard.bind("<Key>", key_pressed)
     # Affiche la fenetre
     gameBoard.mainloop()
 
 def key_pressed(event):
+    slenderMove()
     if (event.char == "q"):
         for row in map:
             for i in row:
@@ -193,5 +193,47 @@ def key_pressed(event):
                         print("vous avez gagné")
                         win.win(gameBoard)
 
+def slenderMove():
+    print("slenderrrrr")
+    d = random.randint(0, 3)
+    if (d == 0):
+        for row in map:
+            for i in row:
+                if (i == 66):
+                    ligne = map.index(row)
+                    colonne = row.index(i)
+                    if (map[ligne][colonne - 1] == 99):
+                        map[ligne][colonne] = 99
+                        map[ligne][colonne - 1] = 66
+
+    if (d == 1):
+        for row in map:
+            for i in row:
+                if (i == 66):
+                    ligne = map.index(row)
+                    colonne = row.index(i)
+                    if (map[ligne][colonne + 1] == 99):
+                        map[ligne][colonne] = 99
+                        map[ligne][colonne + 1] = 66
+
+    if (d == 2):
+        for row in map:
+            for i in row:
+                if (i == 66):
+                    ligne = map.index(row)
+                    colonne = row.index(i)
+                    if (map[ligne - 1][colonne] == 99):
+                        map[ligne][colonne] = 99
+                        map[ligne - 1][colonne] = 66
+
+    if (d == 3):
+        for row in map:
+            for i in row:
+                if (i == 66):
+                    ligne = map.index(row)
+                    colonne = row.index(i)
+                    if (map[ligne + 1][colonne] == 99):
+                        map[ligne][colonne] = 99
+                        map[ligne + 1][colonne] = 66
 
 
