@@ -55,6 +55,6 @@ def login(fenetre,login,mdp ):
                 fileName = 'ressources/level/1.csv'
                 # matrice used to display the board
                 lab = decode.decode(fileName)
-                start.jouer(fenetre,lab)
+                start.init(fenetre,lab)
 
 

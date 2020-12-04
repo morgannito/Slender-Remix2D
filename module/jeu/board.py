@@ -8,9 +8,9 @@ import random
 import module.jeu.win.win as win
 
 
-def jouer(fenetre, lab):
+def init(fenetre , lab):
     # todo changé cette horreur !!
-    global gameBoard , map
+    global gameBoard, map
     gameBoard = fenetre
     map = lab
     for widget in gameBoard.winfo_children():
@@ -23,6 +23,11 @@ def jouer(fenetre, lab):
     frame = Frame(gameBoard, bg="black")
     # Ajouter la frame
     frame.pack(expand=YES)
+    jouer(gameBoard,map)
+
+def jouer(gameBoard, map):
+    for widget in frame.winfo_children():
+        widget.pack_forget()
     global canvas1
     # Création d'un canvas : zone graphique dédié et modifiable
     canvas1 = Canvas(frame, width=1080, height=720, background='white')
