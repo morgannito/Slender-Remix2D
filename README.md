@@ -36,7 +36,6 @@ Actuellement
 
     - Il y a qu'un seul niveau lancer apres la connection. 
     - Pour créer un niveau il faut obligatoire une sortie , 8 pages , et un slender le niveaux doit etre réalisable ...
-    - Slender ne bouge pas pour le moment .
     - La colission avec slender n'est pas gérer .
     - On peu rammasser les pages et finir le niveaux .
 
