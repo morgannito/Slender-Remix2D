@@ -20,6 +20,10 @@ Pour installer les packets nécessaires :
 
         pip install -r requirements.txt
 
+Pour installer la font spécial au jeu :
+    
+    aller dans ressources/font/caveat.zip
+    dézipper et installer la font
 
 
 
