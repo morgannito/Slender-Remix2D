@@ -22,7 +22,7 @@ def main():
     # Taille minimun de la fenetre
     fenetre.minsize(1080, 720)
     # Logo de la fenetre
-    fenetre.iconbitmap("ressources/images/logo/slender-remix.ico")
+    # fenetre.iconbitmap("ressources/images/logo/slender-remix.ico")
     # Couleur de fond de la fenetre
     fenetre.config(background="black")
     # Ajout du titre du jeu dans la fenetre

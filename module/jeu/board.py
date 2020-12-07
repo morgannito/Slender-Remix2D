@@ -3,7 +3,7 @@ from tkinter import *
 import time
 from PIL import Image
 from PIL import ImageTk
-import schedule
+# import schedule
 import random
 import module.jeu.win.win as win
 
@@ -198,7 +198,6 @@ def key_pressed(event):
                         win.win(gameBoard)
 
 def slenderMove():
-    print("slenderrrrr")
     d = random.randint(0, 3)
     if (d == 0):
         for row in map:
