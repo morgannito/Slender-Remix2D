@@ -1,5 +1,9 @@
-pygame~=2.0.0
-requests~=2.25.0
-future~=0.18.2
-schedule~=0.6.0
-Pillow~=8.0.1
+certifi==2020.12.5
+chardet==3.0.4
+future==0.18.2
+idna==2.10
+Pillow==8.0.1
+pygame==2.0.0
+requests==2.25.0
+schedule==0.6.0
+urllib3==1.26.2
