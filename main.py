@@ -14,7 +14,7 @@ def main():
     # Creer une fenetre
     fenetre = Tk()
     # Fullscreen
-    fenetre.attributes('-fullscreen', 1)
+    # fenetre.attributes('-fullscreen', 1)
     # Donne un titre à la fenetre
     fenetre.title("Slender Remix 2D")
     # Dimension de la fenetre

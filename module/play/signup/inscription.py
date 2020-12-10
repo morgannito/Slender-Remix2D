@@ -22,6 +22,9 @@ def signup(fenetre):
     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
+    Retour = Button(fenetre, text="Retour", font=("caveat", 40), bg="black", fg="white")
+    Retour = fenetre.canvas.create_window(fenetre.w // 2 - 800, fenetre.h // 2  - 400, anchor='center',
+                                                      window=Retour)
     # Ajout du champ login
     login = StringVar(frame, value='Login')
     champ_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=login)
