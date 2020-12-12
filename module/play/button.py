@@ -2,6 +2,7 @@ import  pygame
 from tkinter import *
 import module.play.login as login
 import module.play.signup.inscription as signup
+import module.back as back
 
 import module.play.login
 # Fonction boutton Home/play
@@ -23,7 +24,7 @@ def play(fenetre):
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
     # Ajout du bouton inscription
-    Retour = Button(fenetre, text="Retour", font=("caveat", 40), bg="black", fg="white")
+    Retour = Button(fenetre, text="Retour", font=("caveat", 40), bg="black", fg="white",command=lambda : back.backMenu(fenetre))
     Retour = fenetre.canvas.create_window(fenetre.w // 2 - 800, fenetre.h // 2  - 400, anchor='center',
                                                       window=Retour)
     # Ajout du champ login
@@ -43,3 +44,4 @@ def play(fenetre):
     button_inscription = Button(frame, text="inscription", font=("caveat", 40), bg="black", fg="white", command=lambda : signup.signup(fenetre))
     button_inscription = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 350, anchor='center',
                                                       window=button_inscription)
+

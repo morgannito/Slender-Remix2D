@@ -4,6 +4,7 @@ from hashlib import sha512
 import json
 import requests
 import time
+import module.back as back
 
 import module.play.signup.confirm_inscription as confirm
 # Fonction button inscription
@@ -22,7 +23,7 @@ def signup(fenetre):
     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
-    Retour = Button(fenetre, text="Retour", font=("caveat", 40), bg="black", fg="white")
+    Retour = Button(fenetre, text="Retour", font=("caveat", 40), bg="black", fg="white",command=lambda : back.backMenu(fenetre))
     Retour = fenetre.canvas.create_window(fenetre.w // 2 - 800, fenetre.h // 2  - 400, anchor='center',
                                                       window=Retour)
     # Ajout du champ login
