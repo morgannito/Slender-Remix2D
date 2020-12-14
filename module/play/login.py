@@ -51,7 +51,7 @@ def login(fenetre,login,mdp ):
                 # Renvoie sur la page de login  cause erreur mdp!
                 play.play(fenetre)
             else:
-                # Lance le niveauxz
+                # Lance le niveaux
                 fileName = x['niveau']
                 # matrice used to display the board
                 lab = decode.decode(fileName)
