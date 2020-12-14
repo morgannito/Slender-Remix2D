@@ -6,6 +6,9 @@ from PIL import ImageTk
 # import schedule
 import random
 import module.jeu.win.win as win
+import sys
+
+
 
 
 def init(fenetre , lab):
@@ -26,6 +29,7 @@ def init(fenetre , lab):
     jouer(gameBoard,map)
 
 def jouer(gameBoard, map):
+    sys.setrecursionlimit(9000)
     for widget in frame.winfo_children():
         widget.pack_forget()
     global canvas1
