@@ -1,11 +1,12 @@
-def decode(fileName):
-    with open(fileName, "r") as file:
-        lab = []
-        # decode and get the column and row number
-        first_line = file.readline()
-        for line in file:
-            data = line.replace('\n', '').split(",")
-            data = [int(i) for i in data]
-            lab.append(data)
-    file.close()
+import json
+import requests
+
+def decode(niveau):
+    dic = {"niveau": niveau }
+    jsondata = json.dumps(dic).encode("utf8")
+    url = 'http://morgannito.com/apiSlender/niveau.php'
+    x = requests.post(url, data=jsondata)
+    x = json.loads(x.text)
+    lab = x['matrice']
     return lab
+
