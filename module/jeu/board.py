@@ -203,7 +203,7 @@ def key_pressed(event):
                         win.win(gameBoard,pseudo)
     # commande secrete pour enregistre le lvl sans le faire / ne pas le faire si le lvl est irréalisable
     if (event.char == "i"):
-        win.win(gameBoard)
+        win.win(gameBoard, pseudo)
 
 def slenderMove():
     d = random.randint(0, 3)

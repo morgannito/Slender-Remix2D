@@ -8,6 +8,7 @@ import module.jeu.win.save as save
 
 def win(fenetre,pseudo):
     #save
+    save.save(pseudo)
 
     # Rafraichi la fentre pour afficher la confirmation de l'enregistrement
     for widget in fenetre.winfo_children():

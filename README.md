@@ -16,9 +16,11 @@ objectif secondaire :
 la map est plongé dans le noir. Le joueur dispose d’une lampe qu’il peut activer pour  éclairer jusqu'à 10 cases devant lui mais attention l’utilisation de la lampe attire plus vite le slender vers le joueur. Si la lampe est éteinte, le joueur ne voit que 2 cases devant lui.
 L’ajout d’une musique ou d’un son indiquant que slender est proche du joueur environ 5 - 6 cases autour.
 
-Pour installer les packets nécessaires :
+Pour installer les packets nécessaires et lancer le jeu ! :) :
 
-        pip install -r requirements.txt
+        - chmod +x ./install.sh
+        
+        - ./install.sh
 
 Pour installer la font spécial au jeu :
     
