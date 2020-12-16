@@ -5,18 +5,21 @@ from PIL import Image
 from PIL import ImageTk
 # import schedule
 import random
-import module.jeu.win.win as win
+import module.jeu.win.winTest as winTest
 import sys
+# aide à transformer un string en array
+import ast
 
 
 
-
-def init(fenetre , lab,login):
+def init(fenetre , lab):
     # todo changé cette horreur !!
-    global gameBoard, map , pseudo
-    pseudo = login
+    global gameBoard, map
     gameBoard = fenetre
-    map = lab
+    # converti le string en array
+    global res
+    res = ast.literal_eval(lab)
+    map = res
     for widget in gameBoard.winfo_children():
         widget.pack_forget()
     title = Label(gameBoard, text="Slender Remix 2D ", font=("caveat", 40), bg="black", fg="white")
@@ -138,8 +141,10 @@ def key_pressed(event):
                         map[ligne][colonne] = 99
                         map[ligne][colonne - 1] = 22
                         print("vous avez gagné")
-                        win.win(gameBoard,pseudo)
-
+                        winTest.win(gameBoard,res)
+    # commande secrete pour enregistre le lvl sans le faire / ne pas le faire si le lvl est irréalisable
+    if (event.char == "i"):
+        winTest.win(gameBoard,res)
 
     if (event.char == "d"):
         for row in map:
@@ -159,7 +164,7 @@ def key_pressed(event):
                         map[ligne][colonne] = 99
                         map[ligne][colonne + 1] = 22
                         print("vous avez gagné")
-                        win.win(gameBoard,pseudo)
+                        winTest.win(gameBoard,res)
 
 
     if (event.char == "z"):
@@ -180,7 +185,7 @@ def key_pressed(event):
                         map[ligne][colonne] = 99
                         map[ligne - 1][colonne] = 22
                         print("vous avz gagné")
-                        win.win(gameBoard,pseudo)
+                        winTest.win(gameBoard,res)
 
     if (event.char == "s"):
         for row in map:
@@ -200,10 +205,7 @@ def key_pressed(event):
                         map[ligne][colonne] = 99
                         map[ligne + 1][colonne] = 22
                         print("vous avez gagné")
-                        win.win(gameBoard,pseudo)
-    # commande secrete pour enregistre le lvl sans le faire / ne pas le faire si le lvl est irréalisable
-    if (event.char == "i"):
-        win.win(gameBoard)
+                        winTest.win(gameBoard,res)
 
 def slenderMove():
     d = random.randint(0, 3)

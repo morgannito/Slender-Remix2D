@@ -55,6 +55,6 @@ def login(fenetre,login,mdp ):
                 fileName = x['niveau']
                 # matrice used to display the board
                 lab = decode.decode(fileName)
-                start.init(fenetre,lab)
+                start.init(fenetre,lab,login)
 
 

@@ -8,6 +8,7 @@ import module.highScore.buttonHighScore as highscore
 # buttonQuit.py
 import module.quit.buttonQuit as homeExit
 import module.play.button as homePlay
+import module.newLevel.configLvl as config
 
 # Page Home
 def main():
@@ -47,7 +48,7 @@ def main():
 
 
     button_level = Button(frame, text="New level", font=("caveat", 40), bg="black", fg="white",
-                         command=partial(homePlay.play, fenetre))
+                         command=partial(config.newLevel, fenetre))
     button_level = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center',
                                                window=button_level)
 

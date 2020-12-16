@@ -4,11 +4,14 @@ from hashlib import sha512
 import json
 import requests
 import time
-import module.jeu.win.save as save
+import  module.back as menu
 
-def win(fenetre,pseudo):
-    #save
-
+def win(fenetre , lab ):
+    dic = {"matrice": lab}
+    jsondata = json.dumps(dic).encode("utf8")
+    url = 'http://morgannito.com/apiSlender/newlvl.php'
+    x = requests.post(url, data=jsondata)
+    x = json.loads(x.text)
     # Rafraichi la fentre pour afficher la confirmation de l'enregistrement
     for widget in fenetre.winfo_children():
         widget.pack_forget()
@@ -24,12 +27,11 @@ def win(fenetre,pseudo):
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
     Confirm = Label(frame, font=("caveat", 40), bg="black", fg="white",
-                    text="Vous avez échappé à slender ")
+                    text="Votre level à etait ajouté avec succes")
     Confirm = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2,
                                            anchor='center', window=Confirm)
     # Rafraichie
     frame.update()
     # Une ptite pause pour laisser le message s'afficher !
-    time.sleep(5)
-    print("Pas de niveaux 2 pour le moment ...")
-    print("La suite dans le prochain DLC")
+    time.sleep(1)
+    menu.backMenu(fenetre)
