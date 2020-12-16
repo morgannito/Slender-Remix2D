@@ -9,6 +9,7 @@ import module.play.button as play
 
 import module.jeu.board as start
 import module.jeu.decode as decode
+import module.jeu.win.erreur404 as erreur
 # Fonction boutton login
 # Lancement du jeu apres connection
 def login(fenetre,login,mdp ):
@@ -55,6 +56,10 @@ def login(fenetre,login,mdp ):
                 fileName = x['niveau']
                 # matrice used to display the board
                 lab = decode.decode(fileName)
-                start.init(fenetre,lab,login)
+                try:
+                    start.init(fenetre,lab,login)
+                except:
+                    erreur.erreur(fenetre)
+
 
 
