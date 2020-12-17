@@ -129,7 +129,7 @@ def jouer(gameBoard, map):
 
         title2 = Label(frame, text="Nombre de pages restantes : " + str(page) + "", font=("caveat", 40), bg="black",
                        fg="white")
-            title2.pack()
+        title2.pack()
     # permet de bind les touches
     gameBoard.bind("<Key>", key_pressed)
     # Affiche la fenetre
