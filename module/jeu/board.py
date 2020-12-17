@@ -6,9 +6,8 @@ from PIL import ImageTk
 # import schedule
 import random
 import module.jeu.win.win as win
+import module.jeu.lose.lose as lose
 import sys
-
-
 
 
 def init(fenetre , lab,login):
@@ -206,6 +205,19 @@ def key_pressed(event):
         win.win(gameBoard, pseudo)
 
 def slenderMove():
+    for row in map:
+        for i in row:
+            if (i == 66):
+                ligne = map.index(row)
+                colonne = row.index(i)
+                if (map[ligne][colonne - 1] == 22):
+                    lose.lose(gameBoard)
+                if (map[ligne][colonne + 1] == 22):
+                    lose.lose(gameBoard)
+                if (map[ligne - 1][colonne] == 22):
+                    lose.lose(gameBoard)
+                if (map[ligne + 1][colonne] == 22):
+                    lose.lose(gameBoard)
     d = random.randint(0, 3)
     if (d == 0):
         for row in map:
