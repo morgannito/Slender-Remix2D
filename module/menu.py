@@ -60,9 +60,9 @@ def main():
                          command=partial(homeExit.quit, fenetre))
     button_quit = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center',
                                                window=button_quit)
-    song = pygame.mixer.Sound("ressources/musique/aled.ogg")
+    #song = pygame.mixer.Sound("ressources/musique/aled.ogg")
     # Loop = repete la musique , time = à quel moment de demarrage  la musique doit etre jouer ,fadein = fondu sonore
-    song.play(10, 0, 10000)
+   # song.play(10, 0, 10000)
     # Affiche la fenetre
     fenetre.mainloop()
 

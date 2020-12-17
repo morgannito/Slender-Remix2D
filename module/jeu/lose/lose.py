@@ -1,31 +1,24 @@
-import os
-import sys
 from tkinter import *
-import gobject
-import gst
-
-def on_sync_message(bus, message, window_id):
-    if not message.structure is None:
-        if message.structure.get_name() == 'prepare-xwindow-id':
-            image_sink = message.src
-            image_sink.set_property('force-aspect-ratio', True)
-            image_sink.set_xwindow_id(window_id)
-
+import pygame
+import module.back as back
+import time
 
 def lose(fenetre):
+    pygame.mixer.init()
+
     for widget in fenetre.winfo_children():
         widget.pack_forget()
-    gobject.threads_init()
-    video = tkinter.Frame(fenetre, bg='#000000')
-    video.pack(side=tkinter.BOTTOM,anchor=tkinter.S,expand=tkinter.YES,fill=tkinter.BOTH)
-    window_id = video.winfo_id()
-    player = gst.element_factory_make('playbin2', 'player')
-    player.set_property('video-sink', None)
-    player.set_property('uri', 'ressources/video/lose.mp4')
-    player.set_state(gst.STATE_PLAYING)
-    bus = player.get_bus()
-    bus.add_signal_watch()
-    bus.enable_sync_message_emission()
-    bus.connect('sync-message::element', on_sync_message, window_id)
+    frame = Frame(fenetre, bg="black")
+    # Ajouter la frame
+    frame.pack(expand=YES)
+    fenetre.image = PhotoImage(file='ressources/images/menu/background.png')
+    fenetre.w, fenetre.h = fenetre.image.width(), fenetre.image.height()
+    fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
+    fenetre.canvas.pack()
+    fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
+    song = pygame.mixer.Sound("ressources/musique/slender.ogg")
+    song.play(1, 0, 0)
+    fenetre.update()
+    time.sleep(10)
+    back.backMenu(fenetre)
 
-    fenetre.mainloop()
