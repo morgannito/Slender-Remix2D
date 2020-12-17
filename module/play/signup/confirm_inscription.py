@@ -5,7 +5,7 @@ import json
 import requests
 import time
 
-import module.play.button as connection
+import module.play.play as connection
 # function du bouton de confirmation d'inscription
 def confirm_inscription(fenetre ,login,mdp,confirm_mdp ):
     # Verifie si les champs sont plein

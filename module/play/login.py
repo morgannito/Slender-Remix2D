@@ -5,7 +5,7 @@ import json
 import requests
 import time
 
-import module.play.button as play
+import module.play.play as play
 
 import module.jeu.board as start
 import module.jeu.decode as decode

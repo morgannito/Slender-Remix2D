@@ -1,14 +1,13 @@
-from functools import partial
-import pygame
-from tkinter import *
-# Init pygame pour jouer un fond sonore !
-pygame.mixer.init()
-# buttonHighScore.py
-import module.highScore.buttonHighScore as highscore
 # buttonQuit.py
 import module.quit.buttonQuit as homeExit
-import module.play.button as homePlay
+# play.py
+import module.play.play as homePlay
+# config.py
 import module.newLevel.configLvl as config
+
+import pygame
+from tkinter import *
+from functools import partial
 
 # Page Home
 def main():
@@ -40,26 +39,25 @@ def main():
     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
-    # Ajout du bouton play
+    # Ajout du bouton play qui permettra de changer de jouer
     button_play = Button(frame, text="play", font=("caveat", 40), bg="black", fg="white",
                          command=partial(homePlay.play, fenetre))
-    button_play = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 -400 , anchor='center',
+    button_play = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 -200 , anchor='center',
                                                window=button_play)
-
-
+    # Ajout du bouton new level qui permettra d'ajouter un level à partir d'une matrice
     button_level = Button(frame, text="New level", font=("caveat", 40), bg="black", fg="white",
                          command=partial(config.newLevel, fenetre))
-    button_level = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center',
+    button_level = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 , anchor='center',
                                                window=button_level)
 
-    # Ajout du bouton high score
-    button_hs = Button(frame, text="high score", font=("caveat", 40), bg="black", fg="white", command=highscore.fenetre)
-    button_hs = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2, anchor='center', window=button_hs)
     # Ajout du bouton Quitter
     button_quit = Button(frame, text="Quitter", font=("caveat", 40), bg="black", fg="white",
                          command=partial(homeExit.quit, fenetre))
     button_quit = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 + 200, anchor='center',
                                                window=button_quit)
+    # Init pygame pour jouer un fond sonore !
+    pygame.mixer.init()
+    # chemin du song
     #song = pygame.mixer.Sound("ressources/musique/aled.ogg")
     # Loop = repete la musique , time = à quel moment de demarrage  la musique doit etre jouer ,fadein = fondu sonore
    # song.play(10, 0, 10000)
