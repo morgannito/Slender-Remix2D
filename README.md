@@ -22,15 +22,15 @@ Pour installer les packets nécessaires et lancer le jeu ! :) :
         
         - ./install.sh
 
-Pour installer la font spécial au jeu :
-    
+Pour installer la font spécial au jeu sur windows :
+
     aller dans ressources/font/caveat.zip
     dézipper et installer la font
+    
 
 
 
 Le jeu ce joue avec l'aide des touches :
-     
         q : aller à gauche 
         z : aller en haut
         s : aller en bas
@@ -38,12 +38,23 @@ Le jeu ce joue avec l'aide des touches :
 Les pages se recoltes automatiquement quand on passe dessus. 
 
 
+
 Actuellement 
 
     - Il y a qu'un seul niveau lancer apres la connection. 
     - Pour créer un niveau il faut obligatoire une sortie , 8 pages , et un slender le niveaux doit etre réalisable ...
-    - La colission avec slender n'est pas gérer .
-    - On peu rammasser les pages et finir le niveaux .
+    - pour creer un niveau il faut creer une matrice de 19 ligne par 14 colonnes avec obligatoirement les objet placé 
+    pour placer les objet voici leur code : 
+        - mur = -1
+        - joueurs = 22 
+        - sortie = 44 
+        - page = 33 
+        - slender = 66
+il faudra une matrice de ce type à placer dans le champ config lvl :
+
+    [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,22,-1,-1,99,99,99,-1,99,99,33,-1,99,-1],[-1,99,99,-1,99,-1,33,-1,99,-1,99,-1,99,-1],[-1,-1,99,99,99,-1,99,-1,99,-1,99,-1,99,-1],[-1,-1,99,-1,-1,-1,99,-1,99,-1,99,99,99,-1],[-1,99,99,99,99,99,99,-1,99,99,99,-1,99,-1],[-1,33,-1,99,-1,-1,-1,-1,99,-1,99,-1,33,-1],[-1,99,-1,99,99,99,99,99,99,-1,99,99,99,-1],[-1,99,-1,99,-1,99,-1,-1,99,-1,99,-1,-1,-1],[-1,99,-1,99,-1,99,-1,-1,99,-1,99,99,33,-1],[-1,99,-1,99,99,99,-1,-1,99,-1,99,-1,-1,-1],[-1,99,99,99,-1,99,99,99,99,99,99,99,99,-1],[-1,-1,-1,99,-1,-1,99,-1,-1,-1,-1,-1,99,-1],[-1,99,99,99,66,-1,99,-1,99,99,99,-1,99,-1],[-1,99,-1,-1,33,-1,99,99,99,-1,99,-1,99,-1],[-1,99,99,-1,99,-1,99,-1,99,-1,99,99,99,-1],[-1,-1,99,-1,99,-1,99,99,99,-1,-1,99,-1,-1],[-1,99,33,-1,99,99,99,-1,99,99,99,33,44,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]
+
+
 
 
 

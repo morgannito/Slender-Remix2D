@@ -24,6 +24,7 @@ def login(fenetre,login,mdp ):
             url = 'http://morgannito.com/apiSlender/login.php'
             x = requests.post(url, data=jsondata)
             x = json.loads(x.text)
+            # si le niveau est à 0 erreur de mdp ou login
             if (x['niveau'] == 0):
                 # Rafraichi la fentre pour afficher la confirmation de l'enregistrement
                 for widget in fenetre.winfo_children():
@@ -54,11 +55,13 @@ def login(fenetre,login,mdp ):
             else:
                 # Lance le niveaux
                 fileName = x['niveau']
-                # matrice used to display the board
                 lab = decode.decode(fileName)
+                # essaie de lancer le niveau si il arrive pas c'est que le niveau est pas encore créer
                 try:
+                    # lance le niveau
                     start.init(fenetre,lab,login)
                 except:
+                    # niveau pas encore créer lance l'erreur
                     erreur.erreur(fenetre)
 
 

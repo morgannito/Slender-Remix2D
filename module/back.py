@@ -4,14 +4,12 @@ import module.quit.buttonQuit as homeExit
 import module.play.play as homePlay
 # config.py
 import module.newLevel.configLvl as config
-
 from functools import partial
 import pygame
 from tkinter import *
-# buttonQuit.py
 
 
-# Page Home
+# Page Home sert de boutton de retour sans creer une nouvelle fenetre
 def backMenu(fenetre):
     for widget in fenetre.winfo_children():
         widget.pack_forget()
@@ -33,12 +31,12 @@ def backMenu(fenetre):
     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
-    # Ajout du bouton play
+    # Ajout du bouton play qui permettra de changer de jouer
     button_play = Button(frame, text="play", font=("caveat", 40), bg="black", fg="white",
                          command=partial(homePlay.play, fenetre))
     button_play = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 -200 , anchor='center',
                                                window=button_play)
-
+    # Ajout du bouton new level qui permettra d'ajouter un level à partir d'une matrice
     button_level = Button(frame, text="New level", font=("caveat", 40), bg="black", fg="white",
                          command=partial(config.newLevel, fenetre))
     button_level = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 , anchor='center',

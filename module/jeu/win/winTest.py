@@ -6,10 +6,15 @@ import requests
 import time
 import  module.back as menu
 
+# function qui va sauvegardé le niveau que l'utilisateur à crée
+# cette fonction verifie que l'utilisateur à créer un niveau valide en le jouant et gagnant la partie.
 def win(fenetre , lab ):
+    # prepare le json avec la matrice du niveau
     dic = {"matrice": lab}
     jsondata = json.dumps(dic).encode("utf8")
+    # lien de l'api
     url = 'http://morgannito.com/apiSlender/newlvl.php'
+    # request post
     x = requests.post(url, data=jsondata)
     x = json.loads(x.text)
     # Rafraichi la fentre pour afficher la confirmation de l'enregistrement

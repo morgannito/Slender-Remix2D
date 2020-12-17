@@ -7,11 +7,13 @@ from PIL import ImageTk
 import random
 import module.jeu.win.winTest as winTest
 import sys
+import module.jeu.lose.lose as lose
+
 # aide à transformer un string en array
 import ast
 
 
-
+# initialise la map
 def init(fenetre , lab):
     # todo changé cette horreur !!
     global gameBoard, map
@@ -30,10 +32,16 @@ def init(fenetre , lab):
     frame = Frame(gameBoard, bg="black")
     # Ajouter la frame
     frame.pack(expand=YES)
+    # lance la function pour  jouer au jeu
     jouer(gameBoard,map)
 
+
+# permet de jouer la map  et de l'enregistrer si le joueur fini le niveau
 def jouer(gameBoard, map):
+    # todo changé quand le client aura payé
+    # gerer un probleme de recursivité pour le moment j'ai pas mieux ...
     sys.setrecursionlimit(9000)
+    # supprime les anciens elements
     for widget in frame.winfo_children():
         widget.pack_forget()
     global canvas1
@@ -41,7 +49,6 @@ def jouer(gameBoard, map):
     canvas1 = Canvas(frame, width=1080, height=720, background='white')
     carreau = [[canvas1.create_rectangle(i * 40, j * 40, (i + 1) * 40, (j + 1) * 40)
                 for i in range(14)] for j in range(19)]
-    # max i 26 max j 18
     canvas1.pack()
     #mur
     mur = Image.open("ressources/images/jeu/buisson.jpg")  # PIL solution
@@ -71,6 +78,7 @@ def jouer(gameBoard, map):
     y = 0
     global page
     page = 0
+    # cette boucle va creer l'affichage avec des image pour chaque element de la matrice , mur, terre , humain , slender , sortie etc..
     for row in map:
         for i in row:
             # Wall visual
@@ -122,7 +130,9 @@ def jouer(gameBoard, map):
     gameBoard.mainloop()
 
 def key_pressed(event):
+    # fait bouger slender à chaque touche detecter
     slenderMove()
+    # verifie si le  deplacement gauche  est possible et le fait si tel est le cas
     if (event.char == "q"):
         for row in map:
             for i in row:
@@ -140,12 +150,8 @@ def key_pressed(event):
                     if (map[ligne][colonne - 1] == 44 and page == 0):
                         map[ligne][colonne] = 99
                         map[ligne][colonne - 1] = 22
-                        print("vous avez gagné")
                         winTest.win(gameBoard,res)
-    # commande secrete pour enregistre le lvl sans le faire / ne pas le faire si le lvl est irréalisable
-    if (event.char == "i"):
-        winTest.win(gameBoard,res)
-
+    # verifie si le  deplacement droite  est possible et le fait si tel est le cas
     if (event.char == "d"):
         for row in map:
             for i in row:
@@ -163,10 +169,9 @@ def key_pressed(event):
                     if (map[ligne][colonne + 1] == 44 and page == 0):
                         map[ligne][colonne] = 99
                         map[ligne][colonne + 1] = 22
-                        print("vous avez gagné")
                         winTest.win(gameBoard,res)
 
-
+    # verifie si le  deplacement haut  est possible et le fait si tel est le cas
     if (event.char == "z"):
         for row in map:
             for i in row :
@@ -186,7 +191,7 @@ def key_pressed(event):
                         map[ligne - 1][colonne] = 22
                         print("vous avz gagné")
                         winTest.win(gameBoard,res)
-
+    # verifie si le  deplacement bas  est possible et le fait si tel est le cas
     if (event.char == "s"):
         for row in map:
             for i in row :
@@ -206,8 +211,22 @@ def key_pressed(event):
                         map[ligne + 1][colonne] = 22
                         print("vous avez gagné")
                         winTest.win(gameBoard,res)
+# func qui va permettre les deplacement de slender et lose la partie si slender est à coté du joueurs
 
 def slenderMove():
+    for row in map:
+        for i in row:
+            if (i == 66):
+                ligne = map.index(row)
+                colonne = row.index(i)
+                if (map[ligne][colonne - 1] == 22):
+                    lose.lose(gameBoard)
+                if (map[ligne][colonne + 1] == 22):
+                    lose.lose(gameBoard)
+                if (map[ligne - 1][colonne] == 22):
+                    lose.lose(gameBoard)
+                if (map[ligne + 1][colonne] == 22):
+                    lose.lose(gameBoard)
     d = random.randint(0, 3)
     if (d == 0):
         for row in map:

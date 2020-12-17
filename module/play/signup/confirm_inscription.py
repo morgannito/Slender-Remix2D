@@ -17,8 +17,10 @@ def confirm_inscription(fenetre ,login,mdp,confirm_mdp ):
                     mdp = mdp.encode()
                     mdp_sign = sha512(mdp).hexdigest()
                     # Mot de passe hashé , pour plus de sécurité ;)
+                    # prepare le json pour l'api
                     dic = {"login": login, "mdp": mdp_sign , "lvl" : "1" }
                     jsondata = json.dumps(dic).encode("utf8")
+                    # url de l'api
                     url = 'http://morgannito.com/apiSlender/inscription.php'
                     x = requests.post(url, data=jsondata)
                     # Rafraichi la fentre pour afficher la confirmation de l'enregistrement

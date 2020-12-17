@@ -3,6 +3,7 @@ from tkinter import *
 import module.back as back
 import module.newLevel.testMap as test
 
+# func qui permet de generer un nouveau lvl via une matrice de 19 ligne par 14 colonne pour le moment .
 def newLevel(fenetre):
     for widget in fenetre.winfo_children():
         widget.pack_forget()
@@ -17,10 +18,11 @@ def newLevel(fenetre):
     fenetre.canvas = Canvas(frame, width=fenetre.w, height=fenetre.h, bd=0, highlightthickness=0)
     fenetre.canvas.pack()
     fenetre.canvas.create_image((fenetre.w // 2, fenetre.h // 2), image=fenetre.image)
+    # bouton de retour à l'ancienne fenetre
     Retour = Button(fenetre, text="Retour", font=("caveat", 40), bg="black", fg="white",command=lambda : back.backMenu(fenetre))
     Retour = fenetre.canvas.create_window(fenetre.w // 2 - 800, fenetre.h // 2  - 400, anchor='center',
                                                       window=Retour)
-
+    # champ d'entrée pour entrer la matrice
     login = StringVar(frame, value='Matrice 19 L par 14 C max ..')
     champ_login = Entry(frame, font=("caveat", 40), bg="black", fg="white", textvariable=login)
     champ_login2 = fenetre.canvas.create_window(fenetre.w // 2, fenetre.h // 2 - 200, anchor='center',

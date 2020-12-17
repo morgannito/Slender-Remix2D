@@ -9,7 +9,7 @@ import pygame
 from tkinter import *
 from functools import partial
 
-# Page Home
+# Page Home creer la fenetre d'accueil du jeu
 def main():
     # Creer une fenetre
     fenetre = Tk()
@@ -58,9 +58,9 @@ def main():
     # Init pygame pour jouer un fond sonore !
     pygame.mixer.init()
     # chemin du song
-    #song = pygame.mixer.Sound("ressources/musique/aled.ogg")
+    # song = pygame.mixer.Sound("ressources/musique/aled.ogg")
     # Loop = repete la musique , time = à quel moment de demarrage  la musique doit etre jouer ,fadein = fondu sonore
-   # song.play(10, 0, 10000)
+    # song.play(10, 0, 10000)
     # Affiche la fenetre
     fenetre.mainloop()
 
