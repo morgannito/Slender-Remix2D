@@ -9,7 +9,7 @@
 Objectif sur 4 semaines : 
 
 Créer un jeu d’horreur basé sur slender 
-On aura un personnage dans un labyrinthe ou une map , avec pour objectif de collecter 8 Pages de parchemins dispersé sur la carte . Mais attention slender est présent sur la carte si le joueurs rentre en collision avec slender il perd automatiquement le niveaux. Au début, Slender est lent et  est loin du joueur mais à chaque page collectée, Slender se rapproche de plus en plus vite . Une fois les 8 pages collectées , le joueur doit trouver la sortie et Slender devient complètement fou  . ( Slender pourrait commencer à traverser les murs de la carte.) 
+On aura un personnage dans un labyrinthe ou une map, avec pour objectif de collecter 8 Pages de parchemins dispersé sur la carte. Mais attention slender est présent sur la carte si le joueurs rentre en collision avec slender il perd automatiquement le niveaux. Au début, Slender est lent et est loin du joueur mais à chaque page collectée, Slender se rapproche de plus en plus vite. Une fois les 8 pages collectées , le joueur doit trouver la sortie et Slender devient complètement fou  . ( Slender pourrait commencer à traverser les murs de la carte.) 
 
 objectif secondaire : 
 
