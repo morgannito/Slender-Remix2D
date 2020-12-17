@@ -32,6 +32,7 @@ def lose(fenetre):
     fenetre.update()
     # marque un temps de pause
     time.sleep(5)
+    song.stop()
     # rage quit
     ragequit.quit(fenetre)
 
