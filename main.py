@@ -1,8 +1,8 @@
 import module.menu as menu
-import os
 import sys
 from art import *
 from termcolor import colored
+
 # Lance le programme :) !
 
 print(colored(text2art("Slender"), 'cyan'))
